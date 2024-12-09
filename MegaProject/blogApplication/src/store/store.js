@@ -8,8 +8,9 @@ const store = configureStore(
   {
     //reducers
     reducer: AuthReducer,
+    
   }
 )
-
-
+  
+  
 export default store;

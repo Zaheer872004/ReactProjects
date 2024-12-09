@@ -17,24 +17,21 @@ function App() {
   //   }``
   // }
 
-  const countRemoveHandle = () => {
-    if(count > 0){
-    setCount(count - 1)
-    }
-  }
+  
 
   return (
     <>
       <h1>Hello React from Zaheer Khan</h1>
 
       <p>Number of times Cliked {count}</p>
-
+      <h1>Table here is {5 * count}</h1>
       <button 
-      onClick={() => setCount(count + 1 )}
+      onClick={() => setCount((prevCount) => prevCount + 1 )}
       >Add count</button>
-      <button
+
+      {/* <button
       onClick={() => setCount(count - 1 )}
-      >remove count</button>
+      >remove count</button> */}
 
     </>
   )
