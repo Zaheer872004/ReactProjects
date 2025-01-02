@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 
 function App() {
 
-  const [loding, setLoding] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
   
@@ -21,14 +21,15 @@ function App() {
                     dispatch(logout({userData : null})) 
                   }
       )
-      .finally(() => setLoding(false))
+      .finally(() => setLoading(false))
 
   }, [])
   
 
-  return !loding ? 
+  return !loading ? 
   (
-    <div className="min-h-screen flex flex-wrap text-center  bg-gray-400">
+    <div className="min-h-screen flex flex-wrap text-center
+     bg-gray-400">
         <div className="w-full block">
           <Header />
           <main>

@@ -230,6 +230,13 @@ export class Service {
 
   }
 
+  getFilePreview = async (fileId) => {
+    return this.storage.getFilePreview(
+      conf.appwriteBucketId, 
+      fileId
+    );
+  }
+
 }
 
 export const service = new Service();

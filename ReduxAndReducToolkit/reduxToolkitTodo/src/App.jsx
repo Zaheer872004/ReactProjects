@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1 >
-          <AddTodo />  
+          {/* <AddTodo />   */}
           <Todo />
       </h1>
     </>

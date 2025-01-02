@@ -14,11 +14,11 @@ function App() {
 
     setTodos((prev) => ([{ ...todo }, ...prev]))
 
-  }
+  }                   
 
-  const updateTodo = (id, todo) => {
+  const updateTodo = (id, updateTodo) => {
 
-    setTodos((prev) => prev.map(prevTodo => (prevTodo.id === id ? { ...prevTodo, todo: todo } : prevTodo)))
+    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? {...prevTodo, ...updateTodo} : prevTodo)))
 
   }
 

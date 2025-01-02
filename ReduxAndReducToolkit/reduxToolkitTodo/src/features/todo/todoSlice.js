@@ -2,16 +2,14 @@ import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 
 const initialState = {
-  todos : [
-    
-  ],
+  todos : [],
 
 
 }
 
-const sayHello = () => {
-  console.log("Hello", "Zaheer")
-}
+// const sayHello = () => {
+//   console.log("Hello", "Zaheer")
+// }
 
 
 export const todoSlice = createSlice(
@@ -31,15 +29,16 @@ export const todoSlice = createSlice(
           id : nanoid(),
           // text : action.payload.text,  // this also correct
           text : action.payload,
-          completed : false
+          completed : false 
         }
 
         state.todos.push(todo);
 
       },
 
-      deleteTodo : (state, action) => {
+      deleteTodo : (state, action) => {                                           
 
+        // no need to take care of previous state redux toolkit handle it
         const newTodos = state.todos.filter( (todo) => todo.id != action.payload) // also can add action.payload.id
         
         // state.todos.push(newTodos)
@@ -47,21 +46,37 @@ export const todoSlice = createSlice(
 
       },
 
-      updateTodo : (state, action) => {
+      // updateTodo : (state, action) => {
 
-        const updateTodo = state.todos.map( (todo) => ( todo.id === action.payload.id ? {...todo , text : action.payload.text} : todo ) )
+      //   const updateTodo = state.todos.map( (todo) => ( todo.id === action.payload.id ? {...todo , text : action.payload.text} : todo ) )
 
+      //   state.todos = updateTodo;
+
+      // },
+
+      updateTodo: (state, action) => {
+        const updateTodo = state.todos.map((todo) =>
+          todo.id === action.payload.id ? { ...todo, text: action.payload.text } : todo
+        );
         state.todos = updateTodo;
-
       },
 
       toggleComplete : (state, action) => {
 
-        const toggleTodo = state.todos.map( (todo) => ( todo.id === action.payload.id ? {...todo , completed : !todo.completed } : todo ))
+        const toggleTodo = state.todos.map( (todo) => ( todo.id === action.payload ? {...todo , completed : !todo.completed } : todo ))
 
         state.todos = toggleTodo;
 
       },
+
+      // toggleComplete: (state, action) => {
+      //   // Here action.payload is now just the todoId, not the whole todo object
+      //   const toggleTodo = state.todos.map((todo) =>
+      //     todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
+      //   );
+      
+      //   state.todos = toggleTodo;
+      // },
 
 
       initializeTodos: (state, action) => {
